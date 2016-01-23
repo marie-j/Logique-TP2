@@ -51,7 +51,8 @@ insert_trie(X,[Y |L],[Y |R]) :- insert_trie(X,L,R).
 
 % Q10 :
 
-tri_insert([X | L],R) :- insert_trie(X,L,R),tri_insert(R,L).
+tri_insert([],_).
+tri_insert([X | L],R) :- tri_insert(L,T),insert_trie(X,T,R).
 
 % Q11 :
 
@@ -94,7 +95,7 @@ ajoute_ensemble(_,L,R) :- R = L.
 
 
 
-% fonction qui détermine si un élément N appartient à la liste L 
+% fonction qui détermine si un élément N appartient à la liste L
 
 appartient(N,[N]).
 appartient(N,[X | _]) :- N = X, !.
